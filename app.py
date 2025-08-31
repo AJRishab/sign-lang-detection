@@ -3,13 +3,11 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 from PIL import Image
-import cv2
 
 # Load your trained CNN model
 model = load_model("CNNmodel.h5")
 
-# Define class labels (change this based on your dataset)
-# Example: A-Z for ASL
+# Define class labels (change based on your dataset)
 class_labels = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
 st.title("🤟 Sign Language Detection")
@@ -27,7 +25,7 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     # Preprocess image for model
-    img = image.resize((64, 64))  # Change to your model input size
+    img = image.resize((64, 64))  # Adjust to model input size
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
